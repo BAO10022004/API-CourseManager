@@ -15,5 +15,16 @@ public class SubjectService {
     public List<com.example.QL_KHOAHOC.entity.Subject> getSubjects() {
         return subjectRepository.findAll();
     }
+    public  Subject addSubject(Subject subject) {
+        return subjectRepository.save(subject);
+    }
+    public boolean deleteSubject(int id) {
+       try{
 
+        subjectRepository.deleteById(id);
+       }catch (Exception e){
+           return false;
+       }
+        return true;
+    }
 }

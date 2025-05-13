@@ -32,6 +32,10 @@ class TeacherCourseController {
         }
         return  ResponseEntity.ok(teachers);
     }
+    @GetMapping("/all")
+    public List<TeacherCourse> getAllTeacherCourse() {
+        return teacherCourseService.getAll();
+    }
     @GetMapping("/{teacherId}/{courseId}")
     public TeacherCourse getTeacherCourse(@PathVariable int teacherId, @PathVariable int courseId) {
         return teacherCourseService.getTeacherCourse(teacherId, courseId);
@@ -44,7 +48,7 @@ class TeacherCourseController {
         return teacherCourseService.addteacherCourse(teacherCourse1);
     }
     @DeleteMapping("/{id}")
-    public boolean deleteTeacherCourse(@RequestBody int id) {
+    public boolean deleteTeacherCourse(@PathVariable int id) {
         return teacherCourseService.delete(id);
     }
 }

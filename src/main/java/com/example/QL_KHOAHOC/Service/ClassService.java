@@ -26,4 +26,20 @@ public class ClassService {
      public List<Class> getClasses( ) {
          return classRepository.findAll();
      }
+     public boolean deleteClass(int id) {
+         try{
+             classRepository.deleteById(id);
+             return true;
+         }catch (Exception e){
+             return false;
+         }
+     }
+     public boolean addClass(Class c) {
+         try{
+             classRepository.save(c);
+             return true;
+         }catch (Exception e){
+             return false;
+         }
+     }
 }

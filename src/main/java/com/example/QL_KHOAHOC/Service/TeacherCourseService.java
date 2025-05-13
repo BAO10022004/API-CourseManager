@@ -30,7 +30,10 @@ public class TeacherCourseService {
         }
         return teachers;
     }
-
+    public List<TeacherCourse> getAll()
+    {
+        return teacherCourseRepository.findAll();
+    }
     public TeacherCourse getTeacherCourse(int teacherId, int courseId) {
         // Option 1: Direct query using repository (most efficient)
         return teacherCourseRepository.findByTeacherIdAndCourseId(teacherId, courseId);

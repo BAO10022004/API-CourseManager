@@ -5,11 +5,10 @@ import com.example.QL_KHOAHOC.Service.LessonService;
 import com.example.QL_KHOAHOC.entity.Division;
 import com.example.QL_KHOAHOC.entity.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +28,26 @@ class LessonController {
     public Lesson getLessonById(int lesson_id) {
         return  lessonService.getLessonById(lesson_id);
     }
+    @GetMapping("/all")
+    public List<Lesson> getAll() {
 
+        return lessonService.getAll();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteLesson(@PathVariable int id) {
+        var res =  lessonService.deleteLesson(id);
+        if(!res)
+        {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>(res, HttpStatus.OK);
+        }
+    }
+    @PutMapping("/")
+    public ResponseEntity<Boolean> updateLesson(@RequestBody Lesson lesson) {
+        var res = lessonService.save(lesson);
+        if(res == null)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
 }

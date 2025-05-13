@@ -62,4 +62,8 @@ TeacherCourseService teacherCourseService;
     public boolean deleteAccountcourse(@PathVariable int id) {
         return accountcourseSevice.deleteAccountcourse(id);
     }
+    @GetMapping("/all")
+    public List<Accountcourse> getAccountsCourse() {
+        return accountcourseSevice.getAccountcourses();
+    }
 }

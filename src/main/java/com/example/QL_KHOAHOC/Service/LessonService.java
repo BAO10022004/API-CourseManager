@@ -18,4 +18,18 @@ public class LessonService {
     public Lesson getLessonById(int lessonId) {
         return lessonRepository.findById(lessonId).get();
     }
+    public List<Lesson> getAll() {
+        return lessonRepository.findAll();
+    }
+    public Lesson save(Lesson lesson) {
+        return lessonRepository.save(lesson);
+    }
+    public  boolean deleteLesson(int lessonId) {
+        try{
+            lessonRepository.deleteById(lessonId);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }

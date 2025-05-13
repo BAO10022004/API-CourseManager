@@ -47,4 +47,8 @@ public class AccountCourserSevice {
         }
     }
 
+    public List<Accountcourse> getAccountcourses() {
+        return accountcourseRepository.findAll();
+    }
+
 }

@@ -11,7 +11,9 @@ import java.util.List;
 public class SubLessonService {
     @Autowired
     private SubLessonRepository SubLessonRepository;
-
+    public List<SubLesson> getAll() {
+        return SubLessonRepository.findAll();
+    }
     public SubLesson getSubLessonById(int id) {
         return SubLessonRepository.findById(id).get();
     }

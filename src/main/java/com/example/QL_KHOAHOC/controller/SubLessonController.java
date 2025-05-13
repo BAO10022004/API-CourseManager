@@ -33,7 +33,10 @@ class SubLessonController {
     public SubLesson getById(@PathVariable int id) {
         return subLessonService.getSubLessonById(id);
     }
-
+    @GetMapping("/all")
+    public List<SubLesson> getAll() {
+        return subLessonService.getAll();
+    }
     @DeleteMapping("/deleteById/{id}")
     public String deleteById(@PathVariable int id) {
         var x = subLessonService.deleteSubLessonById(id);

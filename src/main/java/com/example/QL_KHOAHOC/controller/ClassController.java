@@ -30,4 +30,24 @@ class ClassController {
     public ResponseEntity<List<Class>> getAll() {
         return ResponseEntity.ok(classService.getClasses()) ;
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Class> deleteClass(@PathVariable("id") int id) {
+        var res = classService.deleteClass(id);
+        if (res)
+        {
+            return  new ResponseEntity<>(null, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PutMapping("/")
+    public ResponseEntity<Class> add(@RequestBody Class classRequest) {
+        var res = classService.addClass(classRequest);
+        if(res)
+        {
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
