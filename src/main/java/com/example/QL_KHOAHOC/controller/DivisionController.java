@@ -2,6 +2,7 @@ package com.example.QL_KHOAHOC.controller;
 
 import com.example.QL_KHOAHOC.Service.ClassService;
 import com.example.QL_KHOAHOC.Service.DivisionService;
+import com.example.QL_KHOAHOC.dtoRequest.DivisionDTO;
 import com.example.QL_KHOAHOC.entity.Division;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,21 +28,11 @@ class DivisionController {
     }
 
     @PostMapping("/addOrUpdate")
-    public String addOrupdateDivision(@RequestBody Division division) {
-        if(division == null)
-            return null;
-        if(division.getId() == null)
-            return null;
-        Division dUpdate = divisionService.getDivisionById(division.getId());
-
-        if(dUpdate == null)
-            return null;
-        if(division.getDivisionName() != "")
-            dUpdate.setDivisionName(division.getDivisionName());
-        if(division.getClassField().getId() != null)
-            dUpdate.setClassField(division.getClassField());
-
-        return  divisionService.addOrUpdateDivision(dUpdate);
+    public String addOrupdateDivision(@RequestBody DivisionDTO division) {
+        Division d = new Division();
+        d.setDivisionName(division.divisionName);
+        d.setClassField(classService.getClassById(division.classID));
+        return  divisionService.addOrUpdateDivision(d);
 
     }
 }

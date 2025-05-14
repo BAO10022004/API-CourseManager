@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37725db8-fa7f-437a-8fd1-311ffaedf402" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/AccountCourserSevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/AccountCourserSevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/ClassService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/ClassService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/LessonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/LessonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/SubLessonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/SubLessonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/SubjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/SubjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/TeacherCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/TeacherCourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/AccountCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/AccountCourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/dtoRequest/DivisionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/ClassController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/ClassController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/LessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/LessonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/SubLessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/SubLessonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/SubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/SubjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/TeacherCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/TeacherCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/DivisionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/DivisionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +27,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -53,37 +44,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.QlKhoahocApplication.executor": "Run",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/giaba/source/repos/3/Ky2/Java/QL_KHOAHOC/QL_KHOAHOC",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.QlKhoahocApplication.executor&quot;: &quot;Run&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giaba/source/repos/3/Ky2/Java/QL_KHOAHOC/QL_KHOAHOC&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb",
-      "mysql",
-      "mysql_aurora"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;,
+      &quot;mysql&quot;,
+      &quot;mysql_aurora&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="QlKhoahocApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="QL_KHOAHOC" />
@@ -120,7 +111,8 @@
       <workItem from="1747010847368" duration="3869000" />
       <workItem from="1747023873162" duration="3438000" />
       <workItem from="1747096455889" duration="3619000" />
-      <workItem from="1747178202734" duration="971000" />
+      <workItem from="1747178202734" duration="5098000" />
+      <workItem from="1747208846178" duration="951000" />
     </task>
     <servers />
   </component>

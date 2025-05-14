@@ -1,8 +1,11 @@
 package com.example.QL_KHOAHOC.controller;
 
 import com.example.QL_KHOAHOC.Service.ClassService;
+import com.example.QL_KHOAHOC.Service.TeacherCourseService;
+import com.example.QL_KHOAHOC.dtoRequest.AddClassDTO;
 import com.example.QL_KHOAHOC.dtoRequest.ClassRequest;
 import com.example.QL_KHOAHOC.entity.Class;
+import com.example.QL_KHOAHOC.responsitory.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,8 @@ import java.util.List;
 class ClassController {
     @Autowired
     private ClassService classService;
+    @Autowired
+    private TeacherCourseService teacherCourseService;
 
     @GetMapping("/get_class/{teacher_id}/{course_id}")
     public ResponseEntity<List<Class>> getClassByTeacherCourse(
@@ -40,9 +45,12 @@ class ClassController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
-    @PutMapping("/")
-    public ResponseEntity<Class> add(@RequestBody Class classRequest) {
-        var res = classService.addClass(classRequest);
+    @PutMapping("/add")
+    public ResponseEntity<Class> add(@RequestBody AddClassDTO classRequest) {
+        Class _class = new Class();
+        _class.setClassName(classRequest.className);
+        _class.setTeacherCourse(teacherCourseService.getTeacherCourse(classRequest.teacherId, classRequest.courseId));
+        var res = classService.addClass(_class);
         if(res)
         {
             return new ResponseEntity<>(null, HttpStatus.OK);
