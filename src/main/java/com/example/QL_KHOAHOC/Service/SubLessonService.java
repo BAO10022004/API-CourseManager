@@ -1,28 +1,29 @@
 package com.example.QL_KHOAHOC.Service;
 
-import com.example.QL_KHOAHOC.entity.SubLesson;
-import com.example.QL_KHOAHOC.responsitory.SubLessonRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.example.QL_KHOAHOC.entity.SubLesson;
+import com.example.QL_KHOAHOC.responsitory.SubLessonRepository;
 
 @Service
 public class SubLessonService {
     @Autowired
-    private SubLessonRepository SubLessonRepository;
+    private SubLessonRepository subLessonRepository;
     public List<SubLesson> getAll() {
-        return SubLessonRepository.findAll();
+        return subLessonRepository.findAll();
     }
     public SubLesson getSubLessonById(int id) {
-        return SubLessonRepository.findById(id).get();
+        return subLessonRepository.findById(id).get();
     }
     public List<SubLesson> getAllSubLessonsByLessonId(int id) {
-        return  SubLessonRepository.getSubLessonByLesson_Id(id);
+        return  subLessonRepository.getSubLessonByLesson_Id(id);
     }
     public boolean deleteSubLessonById(int id) {
         try{
-            SubLessonRepository.deleteById(id);
+            subLessonRepository.deleteById(id);
             return true;
         }
         catch(Exception e){
@@ -31,7 +32,7 @@ public class SubLessonService {
     }
     public boolean addOrUpdateSubLesson(SubLesson s) {
         try{
-            SubLessonRepository.saveAndFlush(s);
+            subLessonRepository.save(s);
             return true;
         }
         catch(Exception e){

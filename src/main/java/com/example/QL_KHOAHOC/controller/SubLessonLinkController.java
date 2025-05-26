@@ -2,6 +2,7 @@ package com.example.QL_KHOAHOC.controller;
 
 import com.example.QL_KHOAHOC.Service.SubLessonLinkService;
 import com.example.QL_KHOAHOC.entity.SubLessonLink;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,12 +10,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import com.example.QL_KHOAHOC.dtoRequest.SubLessonLinkDTO;
+
 @RestController
 @RequestMapping("/api/sublesson-links") // Prefix for all endpoints in this controller
 public class SubLessonLinkController {
     @Autowired
     private SubLessonLinkService subLessonLinkService;
-
+    @Autowired
+    private com.example.QL_KHOAHOC.Service.SubLessonService subLessonService;
+    @Autowired
+    private com.example.QL_KHOAHOC.Service.TypeService typeService;
     // Get all SubLessonLinks
     @GetMapping("/all")
     public ResponseEntity<List<SubLessonLink>> getAllSubLessonLinks() {
@@ -57,10 +63,15 @@ public class SubLessonLinkController {
 
     // Create a new SubLessonLink
     @PostMapping("/create")
-    public ResponseEntity<SubLessonLink> createSubLessonLink(@RequestBody SubLessonLink subLessonLink) {
-        boolean created = subLessonLinkService.addSubLessonLink(subLessonLink);
+    public ResponseEntity<SubLessonLink> createSubLessonLink(@RequestBody SubLessonLinkDTO subLessonLink) {
+        SubLessonLink subLessonLinkEntity = new SubLessonLink();
+        subLessonLinkEntity.setSubLesson(subLessonService.getSubLessonById(subLessonLink.SublessonID));
+        subLessonLinkEntity.setType(typeService.getTypeById(subLessonLink.type));
+        subLessonLinkEntity.setLink(subLessonLink.link);
+
+        boolean created = subLessonLinkService.addSubLessonLink(subLessonLinkEntity);
         if (created) {
-            return new ResponseEntity<>(subLessonLink, HttpStatus.CREATED);
+            return new ResponseEntity<>(subLessonLinkEntity, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -79,10 +90,14 @@ public class SubLessonLinkController {
 
     // Add or update a SubLessonLink
     @PutMapping("/add-or-update")
-    public ResponseEntity<SubLessonLink> addOrUpdateSubLessonLink(@RequestBody SubLessonLink subLessonLink) {
-        boolean success = subLessonLinkService.addOrUpdateSubLessonLink(subLessonLink);
+    public ResponseEntity<SubLessonLink> addOrUpdateSubLessonLink(@RequestBody  SubLessonLinkDTO subLessonLink) {
+        SubLessonLink subLessonLinkEntity = new SubLessonLink();
+        subLessonLinkEntity.setSubLesson(subLessonService.getSubLessonById(subLessonLink.SublessonID));
+        subLessonLinkEntity.setType(typeService.getTypeById(subLessonLink.type));
+        subLessonLinkEntity.setLink(subLessonLink.link);
+        boolean success = subLessonLinkService.addOrUpdateSubLessonLink(subLessonLinkEntity);
         if (success) {
-            return new ResponseEntity<>(subLessonLink, HttpStatus.OK);
+            return new ResponseEntity<>(subLessonLinkEntity, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

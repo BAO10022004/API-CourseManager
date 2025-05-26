@@ -2,6 +2,7 @@ package com.example.QL_KHOAHOC.controller;
 
 import com.example.QL_KHOAHOC.Service.DivisionService;
 import com.example.QL_KHOAHOC.Service.LessonService;
+import com.example.QL_KHOAHOC.dtoRequest.LessonDTO;
 import com.example.QL_KHOAHOC.entity.Division;
 import com.example.QL_KHOAHOC.entity.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,12 @@ class LessonController {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
     }
-    @PutMapping("/")
-    public ResponseEntity<Boolean> updateLesson(@RequestBody Lesson lesson) {
-        var res = lessonService.save(lesson);
+    @PutMapping("/add")
+    public ResponseEntity<Boolean> updateLesson(@RequestBody LessonDTO lesson) {
+        Lesson l = new Lesson();
+        l.setLessonName(lesson.getLessonName());
+        l.setDivision(divisionService.getDivisionById(lesson.getDivisionID()));
+        var res = lessonService.save(l);
         if(res == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(true, HttpStatus.OK);

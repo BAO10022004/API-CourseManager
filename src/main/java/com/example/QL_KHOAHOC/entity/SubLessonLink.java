@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "sub_lesson_link")
 public class SubLessonLink {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "classlinkID", nullable = false)
     private Integer id;
 

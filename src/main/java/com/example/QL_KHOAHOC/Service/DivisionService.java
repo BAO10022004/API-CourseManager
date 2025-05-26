@@ -26,13 +26,13 @@ public class DivisionService {
             return e.getMessage().toString();
         }
     }
-    public String deleteDivision(Division division) {
+    public boolean deleteDivision(int id) {
         try{
-            divisionRepository.delete(division);
-            return "Division deleted successfully";
+            divisionRepository.deleteById(id);
+            return true;
         }
         catch (Exception e){
-            return e.getMessage().toString();
+            return false;
         }
     }
 

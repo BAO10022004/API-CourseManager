@@ -1,16 +1,19 @@
 package com.example.QL_KHOAHOC.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.QL_KHOAHOC.Service.LessonService;
 import com.example.QL_KHOAHOC.Service.SubLessonService;
-import com.example.QL_KHOAHOC.entity.Lesson;
 import com.example.QL_KHOAHOC.entity.SubLesson;
-import com.example.QL_KHOAHOC.responsitory.LessonRepository;
-import com.example.QL_KHOAHOC.responsitory.SubLessonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/sublesson")
@@ -45,9 +48,16 @@ class SubLessonController {
         return "Failed";
     }
 
-    @PutMapping("/addOrUpdate")
-    public String addOrUpdate(@RequestBody SubLesson subLesson) {
-        var x = subLessonService.addOrUpdateSubLesson(subLesson);
+    @PutMapping("/add")
+    public String add(@RequestBody com.example.QL_KHOAHOC.dtoRequest.SubLesson subLesson) {
+        SubLesson subLessonEntity = new SubLesson();
+        subLessonEntity.setSubLessonName(subLesson.getSub());
+        var lesson = lessonService.getLessonById(subLesson.getLessonId());
+        if (lesson == null) {
+            return "Lesson not found";
+        }
+        subLessonEntity.setLesson(lesson);
+        var x = subLessonService.addOrUpdateSubLesson(subLessonEntity);
         if(x)
             return "OK";
         return "Failed";

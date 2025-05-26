@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 public class Division {
     @Id
     @Column(name = "division_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "division_name", nullable = false, length = 50)

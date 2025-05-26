@@ -3,6 +3,7 @@ package com.example.QL_KHOAHOC.entity;
 import jakarta.persistence.*;
 
 @Entity
+
 @Table(name = "teacher")
 public class Teacher {
     @Id
@@ -15,7 +16,13 @@ public class Teacher {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
-
+     @PrePersist
+    public void generateId() {
+        if (this.id == null) {
+            // Logic tạo ID tự động
+            this.id = (int) System.currentTimeMillis(); 
+        }
+    }
     public Integer getId() {
         return id;
     }

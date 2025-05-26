@@ -27,12 +27,16 @@ class DivisionController {
         return divisionService.getAllDivisionsByClass(classId);
     }
 
-    @PostMapping("/addOrUpdate")
+    @PutMapping("/add")
     public String addOrupdateDivision(@RequestBody DivisionDTO division) {
         Division d = new Division();
         d.setDivisionName(division.divisionName);
-        d.setClassField(classService.getClassById(division.classID));
+        d.setClassField(classService.getClasses().stream().filter(x -> x.getId() == division.classID).findFirst().get());
         return  divisionService.addOrUpdateDivision(d);
 
+    }
+    @DeleteMapping("/{id}")
+    public boolean deleteDivision(@PathVariable("id") int divisionID) {
+        return divisionService.deleteDivision(divisionID);
     }
 }

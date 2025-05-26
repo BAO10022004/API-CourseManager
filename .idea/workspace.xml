@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37725db8-fa7f-437a-8fd1-311ffaedf402" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/dtoRequest/DivisionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/dtoRequest/LessonDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/ClassController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/ClassController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/DivisionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/Service/DivisionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/DivisionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/DivisionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/LessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/controller/LessonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/entity/Division.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/QL_KHOAHOC/entity/Division.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,10 +115,27 @@
       <workItem from="1747096455889" duration="3619000" />
       <workItem from="1747178202734" duration="5098000" />
       <workItem from="1747208846178" duration="951000" />
+      <workItem from="1747238241568" duration="7982000" />
+      <workItem from="1747294237839" duration="698000" />
+      <workItem from="1747802910629" duration="1368000" />
+      <workItem from="1747823401645" duration="738000" />
+      <workItem from="1748168394828" duration="19000" />
+      <workItem from="1748168432998" duration="25000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -48,11 +48,8 @@ public class SubLessonLinkService {
     // Update an existing SubLessonLink
     public boolean updateSubLessonLink(SubLessonLink subLessonLink) {
         try {
-            if (repo.existsById(subLessonLink.getId())) {
-                repo.save(subLessonLink);
+                repo.saveAndFlush(subLessonLink); 
                 return true;
-            }
-            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -60,15 +57,47 @@ public class SubLessonLinkService {
     }
 
     // Add or update a SubLessonLink
-    public boolean addOrUpdateSubLessonLink(SubLessonLink subLessonLink) {
-        try {
+    // Phiên bản được cải thiện
+public boolean addOrUpdateSubLessonLink(SubLessonLink subLessonLink) {
+    // Tìm kiếm bản ghi đã tồn tại dựa trên subLessonId, typeId và link
+    Optional<SubLessonLink> existingLink;
+        existingLink = repo
+        .findBySubLessonIdAndTypeIdAndLink(
+                subLessonLink.getSubLesson().getId(),
+                subLessonLink.getType().getId(),
+                subLessonLink.getLink()
+        );
+    
+    try {
+        if (existingLink.isPresent()) {
+            
+            repo.deleteAllById(java.util.Collections.singleton(existingLink.get().getId()));
             repo.save(subLessonLink);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        } else {
+            // Nếu chưa tồn tại, thêm mới
+            repo.save(subLessonLink);
         }
+        return true;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
     }
+}
+
+// Phương thức hỗ trợ để cập nhật các field
+private void updateFields(SubLessonLink existing, SubLessonLink newData) {
+    if (newData.getLink() != null) {
+        existing.setLink(newData.getLink());
+    }
+    if (newData.getSubLesson() != null) {
+        existing.setSubLesson(newData.getSubLesson());
+    }
+    if (newData.getType() != null) {
+        existing.setType(newData.getType());
+    }
+    // Thêm các field khác cần cập nhật...
+}
+
 
     // Delete a SubLessonLink by ID
     public boolean deleteSubLessonLinkById(int classlinkID) {
