@@ -18,4 +18,11 @@ public class TypeService {
     public List<Type> getTypes(int id) {
         return typeRepository.findAll();
     }
+    public Type createType(Type type) {
+        if (type != null) {
+            return typeRepository.save(type);
+        } else {
+            throw new IllegalArgumentException("Type cannot be null");
+        }
+    }
 }

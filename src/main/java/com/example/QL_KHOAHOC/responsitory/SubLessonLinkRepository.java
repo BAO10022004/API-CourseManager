@@ -1,11 +1,10 @@
 package com.example.QL_KHOAHOC.responsitory;
 
-import com.example.QL_KHOAHOC.entity.SubLessonLink;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.QL_KHOAHOC.entity.SubLessonLink;
 
 public interface SubLessonLinkRepository extends JpaRepository<SubLessonLink, Integer> {
     List<SubLessonLink> findSubLessonLinksById(Integer id);
@@ -14,5 +13,9 @@ public interface SubLessonLinkRepository extends JpaRepository<SubLessonLink, In
 
     List<SubLessonLink> findSubLessonLinksBySubLesson_Id(Integer subLessonId);
 
-    public Optional<SubLessonLink> findBySubLessonIdAndTypeIdAndLink(Integer id, Integer id0, String link);
+
+    public void deleteBySubLessonIdAndTypeId(Integer id, Integer id0);
+
+    public List<SubLessonLink> findBySubLessonIdAndTypeId(Integer subLessonId, Integer typeId);
+
 }

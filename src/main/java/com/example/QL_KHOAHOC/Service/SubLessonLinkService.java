@@ -1,12 +1,13 @@
 package com.example.QL_KHOAHOC.Service;
 
-import com.example.QL_KHOAHOC.entity.SubLessonLink;
-import com.example.QL_KHOAHOC.responsitory.SubLessonLinkRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.QL_KHOAHOC.entity.SubLessonLink;
+import com.example.QL_KHOAHOC.responsitory.SubLessonLinkRepository;
 
 @Service
 public class SubLessonLinkService {
@@ -56,33 +57,40 @@ public class SubLessonLinkService {
         }
     }
 
-    // Add or update a SubLessonLink
-    // Phiên bản được cải thiện
-public boolean addOrUpdateSubLessonLink(SubLessonLink subLessonLink) {
-    // Tìm kiếm bản ghi đã tồn tại dựa trên subLessonId, typeId và link
-    Optional<SubLessonLink> existingLink;
-        existingLink = repo
-        .findBySubLessonIdAndTypeIdAndLink(
-                subLessonLink.getSubLesson().getId(),
-                subLessonLink.getType().getId(),
-                subLessonLink.getLink()
-        );
-    
-    try {
-        if (existingLink.isPresent()) {
-            
-            repo.deleteAllById(java.util.Collections.singleton(existingLink.get().getId()));
-            repo.save(subLessonLink);
-        } else {
-            // Nếu chưa tồn tại, thêm mới
-            repo.save(subLessonLink);
+    public boolean addOrUpdateSubLessonLink(SubLessonLink subLessonLink) {
+        try {
+        var subLessonId = subLessonLink.getSubLesson().getId();
+        var typeId = subLessonLink.getType().getId();
+        
+        // Đếm số record tồn tại trước khi xóa
+        long countBefore = repo.count();
+        System.out.println("Total records before: " + countBefore);
+        
+        // Tìm và xóa chính xác
+        List<SubLessonLink> existingLinks = repo.findBySubLessonIdAndTypeId(subLessonId, typeId);
+        System.out.println("Found " + existingLinks.size() + " links to delete");
+        
+        if (!existingLinks.isEmpty()) {
+            // Xóa từng item thay vì deleteAll để an toàn hơn
+            for (SubLessonLink link : existingLinks) {
+                repo.delete(link);
+                System.out.println("Deleted link ID: " + link.getId());
+            }
         }
+        
+        // Save new
+        repo.save(subLessonLink);
+        
+        long countAfter = repo.count();
+        System.out.println("Total records after: " + countAfter);
+        
         return true;
+        
     } catch (Exception e) {
         e.printStackTrace();
         return false;
     }
-}
+    }
 
 // Phương thức hỗ trợ để cập nhật các field
 private void updateFields(SubLessonLink existing, SubLessonLink newData) {

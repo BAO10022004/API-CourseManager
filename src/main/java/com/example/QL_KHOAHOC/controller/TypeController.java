@@ -36,4 +36,10 @@ public class TypeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
+    // Create a new Type
+    @PostMapping("/create")
+    public ResponseEntity<Type> createType(@RequestBody Type type) {
+        Type createdType = typeService.createType(type);
+        return new ResponseEntity<>(createdType, HttpStatus.CREATED);
+    }
 }
