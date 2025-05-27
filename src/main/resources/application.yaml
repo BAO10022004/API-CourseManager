@@ -15,7 +15,7 @@ spring:
       minimum-idle: 5
       pool-name: SpringBootJPAHikariCP
       connection-test-query: SELECT 1
-  
+      auto-commit: false
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
